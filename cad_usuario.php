@@ -21,6 +21,7 @@ $senha = htmlspecialchars($_POST['senha']);
 $conf_senha = htmlspecialchars($_POST['conf_senha']);
 
 
+
             if($senha === $conf_senha){
 
                     $sql = "SELECT *FROM usuario where usuario = '$usuario'";
@@ -42,26 +43,23 @@ $conf_senha = htmlspecialchars($_POST['conf_senha']);
                                 font-size:25px'> CADASTRO REALIZADO COM SUCESSO!</h5>";
                                 }else{
                                     echo "<h4 style='color:white; text-align:center; 
-                        font-size:25px'> Usuário não cadastrado no banco de dados!</h4>";
+                                    font-size:25px'> Usuário não cadastrado no banco de dados!</h4>";
 
                                 }
         
                     }
 
+            }else{
 
+                    echo "<h4 style='color:white; text-align:center; 
+                    font-size:25px'> As senhas não coincidem!</h4>";
 
-
-}else{
-
-    echo "<h4 style='color:white; text-align:center; 
-            font-size:25px'> As senhas não coincidem!</h4>";
-
+                }
 }
 
 ?>
 
 
-    
 <p>Cadastro de Usuário:</p>
 <a href="tela_inicial_login.php">Fazer Login</a>
 

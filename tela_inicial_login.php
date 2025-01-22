@@ -58,14 +58,25 @@ outline: none;
 </style>
 </head>
 <body>
-
+<?php 
+session_start();
+?>
 
 <h3>LOGIN</h3>
 <hr>
 
+<?php 
+if(isset($_SESSION['nao_autenticado'])):
+
+?>
 <div class="erro">
-<h3>Erro: Usuário ou senha Inválidos.</h3>
+<h3>Erro: Senha Inválida.</h3>
 </div>
+
+<?php 
+endif;
+unset($_SESSION['nao_autenticado']);
+?>
 
 <div class="login">
 <form action="login.php" method="POST">
