@@ -6,8 +6,13 @@
     <title>Painel</title>
 </head>
 <body>
-    
-<h2>Olá,  <a href="#">Encerrar Sessão</a></h2>
+    <?php
+    include('arquivo_de_login/verifica_login.php');
+    ?>    
+
+
+
+<h2>Olá,<?php echo $_SESSION['usuario'];?> <a href="arquivo_de_login/logout.php">Encerrar Sessão</a></h2>
 <br>
 <hr>
 
@@ -22,7 +27,6 @@
 <h4>&copy; Thales LTDA</h4>
 <hr>
 
-<a href="login.php">Voltar para a página anterior:</a>
 
 </body>
 </html>
