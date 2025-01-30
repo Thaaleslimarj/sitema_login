@@ -12,7 +12,8 @@
 
 
 
-<h2>Olá,<?php echo $_SESSION['usuario'];?> <a href="arquivo_de_login/logout.php">Encerrar Sessão</a></h2>
+<h2>Olá,<?php echo $_SESSION['usuario'];?>! <br>
+<a href="arquivo_de_login/logout.php">Encerrar Sessão</a></h2>
 <br>
 <hr>
 

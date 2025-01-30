@@ -12,9 +12,9 @@
 
 
     <div class="senha">
-    <form action="cadastra_nova_senha.php" method="POST">
+    <form action="cadastrar_nova_senha.php" method="POST">
     <input type="text" name="usuario" placeholder="Digite o Usuário:" require> <br>
-    <input type="numer" name="rg" placeholder="Digite o RG:" require> <br>
+    <input type="text" name="rg" placeholder="Digite o RG:" require> <br>
     <label for="data">Data de Nascimento:</label><br>
     <input type="date" id="data" name="data_nascimento"  require> <br>
     <input type="password" name="senha" placeholder="Digite nova senha:" require> <br>
@@ -27,5 +27,7 @@
     </form>
     </div>
     
+    <a href="../login.php">Página Inicial</a>
+
 </body>
 </html>
