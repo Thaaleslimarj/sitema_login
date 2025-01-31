@@ -30,13 +30,16 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 
                 $sql = "UPDATE usuario SET senha='$hashsenha' where id=$id";
                 $retorno =$conn->query($sql);
-                echo '<h2>Senha alterada com sucesso!';
+                echo '<h4>Senha alterada com sucesso!';
                 }else{                
-                echo '<h2>As senhas não conferem ou os dados informados estão incorretos!';
+                echo '<h4>As senhas não conferem ou os dados informados estão incorretos!';
                 }
 
                 }else{
-                    echo '<h2>Dados não localizados no banco de dados!';
+                    echo '<h4>Dados não localizados no banco de dados!';
                 }
 }
+
 ?>
+<br><hr>
+<a href="../painel_logado.php">Página inicial</a>

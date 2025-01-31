@@ -1,5 +1,5 @@
 <?php  
-include '../../config/conn.php';
+include '../../conexao.php';
 
 // Dados do funcionário a serem atualizados  
 $id = $_POST['id']; 

@@ -1,7 +1,7 @@
 <?php
 $id = $_GET["id"];
 
-include_once '../../config/conn.php';
+include_once '../../conexao.php';
 
     $sql = "delete from funcionario where id=" . $id;
 

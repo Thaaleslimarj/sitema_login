@@ -1,5 +1,5 @@
 <?php 
-include '../config/conn.php';
+include '../conexao.php';
 ?>
 
 <!DOCTYPE html>
@@ -43,10 +43,14 @@ include '../config/conn.php';
     //if(!empty($_GET["nome"])){
 
     //isset() se existe
-    if (isset($_GET["nome"])) {
+    // if (isset($_GET["nome"])) {
 
-        $nome = $_GET["nome"];
+        $nome = '';
+        if (isset($_GET["nome"])) {
+            $nome = $_GET["nome"];
+        }
 
+ 
         $sql = "select * from funcionario where nome like '" . $nome . "%' ";
 
         $result = mysqli_query($conn, $sql);
@@ -86,12 +90,12 @@ include '../config/conn.php';
         } else {
             echo "Nenhum cliente cadastrado";
         }
-    }
+    // }
     ?>
     <br>
     <a href="cadastrar.php"> Cadastrar funcionário </a>
     <br>
-    <a href="../index.php">Página Inicial</a>
+    <a href="../painel_logado.php">Página Inicial</a>
 </body>
 
 </html>

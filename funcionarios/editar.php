@@ -7,7 +7,7 @@
     <body>
        
        <?php
-        include_once '../config/conn.php';
+        include_once '../conexao.php';
         $id = $_GET["id"];
 
         $sql = "select * from funcionario where id = " . $id;

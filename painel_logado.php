@@ -10,21 +10,15 @@
     include('arquivo_de_login/verifica_login.php');
     ?>    
 
+<h3>Olá,<?php echo $_SESSION['usuario'];?>! <br>
 
+<a href="arquivo_de_login/logout.php">Encerrar Sessão</a></h3>
+<br><hr>
 
-<h2>Olá,<?php echo $_SESSION['usuario'];?>! <br>
-<a href="arquivo_de_login/logout.php">Encerrar Sessão</a></h2>
-<br>
-<hr>
+<a href="funcionarios">Consultar funcionario</a>
+</b>
 
-<div class="principal">
-<div class="interna">
-    <h3>DASHBOARD DO USUÁRIO:</h3>
-</div>
-<hr>
-</div>
-<hr>
-<br>
+<br><hr>
 <h4>&copy; Thales LTDA</h4>
 <hr>
 
