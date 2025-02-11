@@ -8,6 +8,7 @@
 <body>
 
 <?php 
+
 include('conexao.php');
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
@@ -71,8 +72,21 @@ $conf_senha = htmlspecialchars($_POST['conf_senha']);
 <input type="date" name="data_nascimento" placeholder="Data de nascimento:" required><br>
 <input type="password" name="senha" placeholder="Senha:" required><br>
 <input type="password" name="conf_senha" placeholder="Confirme sua senha:" required><br>
- 
-
+ <select name="tipo_funcionario" id="tipo_funcionario">
+    <?php 
+        $query_tipo_funcionario = "SELECT * from tipo_funcionario";
+        $executa_query = mysqli_query($conn, $query_tipo_funcionario);
+        $resultado = mysqli_fetch_all($executa_query, MYSQLI_ASSOC);
+        
+    foreach($resultado as $tipo_resultado) {
+        echo 
+        "<option value={$tipo_resultado['id']}>
+         {$tipo_resultado['tipo']}
+         </option>";
+    }
+    ?>
+</select>
+<br>
 <input class="botao" type="submit" value="Cadastrar"> |
 <input class="botao" type="reset" value="Limpar">
 <hr>
