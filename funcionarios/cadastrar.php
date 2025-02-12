@@ -22,7 +22,7 @@
         <input type="password" name="senha" required><br><br>  
        
         Tipo: 
-        <select name="tipo" id="tipo">
+        <select name="tipo_funcionario" id="tipo">
             <option value="admin">Administrador</option>
             <option value="usuario">Usuário</option>
         </select> <br><br>

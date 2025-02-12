@@ -7,7 +7,7 @@
 <style>
 
 body{
-background-color: #008080;
+background-color:rgb(0, 102, 128);
 }
 
 .login{

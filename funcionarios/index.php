@@ -77,7 +77,7 @@ include '../conexao.php';
                 <td><?php echo $row["id"] ?> </td>
                 <td><?php echo $row["nome"] ?></td>
                 <td><?php echo $row["login"] ?></td>
-                <td><?php echo $row["tipo"] ?></td>
+                <td><?php echo $row["tipo_funcionario"] ?></td>
                 <td><?php echo $row["status"] ?></td>
                 <td><a href="editar.php?id=<?php echo $row["id"] ?>">...</a></td>
                 <td><a href="#"onclick="excluir(<?php echo $row["id"] ?>)">X</a></td>

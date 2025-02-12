@@ -36,7 +36,7 @@ $num_registro = $retorno->num_rows;
 
                         }
 
-                    }else{ 
+                        }else{ 
 
                         echo "<h2>Usuário não cadastrado!</h2>";
                         echo "<hr>";
