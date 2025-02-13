@@ -33,7 +33,7 @@
             <input type="password" name="senha"  value="<?php echo ($row["senha"]) ?>"/><br/>
                 
                 Tipo: <br>
-            <select name="tipo" id="tipo">
+            <select name="tipo_funcionario" id="tipo_funcionario">
                 <option value="admin">Administrador</option>
                 <option value="usuario">Usuário</option>
             </select>
@@ -45,6 +45,7 @@
                 <option value="inativo">Inativo</option>
             </select>
             
+            <br><br>
             <input type="submit" value="Enviar" />
 
         </form>        

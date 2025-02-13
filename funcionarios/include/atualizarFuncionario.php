@@ -6,12 +6,20 @@ $id = $_POST['id'];
 $nome = $_POST['nome']; 
 $login = $_POST['login']; 
 $senha = $_POST['senha']; 
-$tipo = $_POST['tipo']; 
-$status = $_POST['status']; 
+$tipo_funcionario = $_POST['tipo_funcionario']; 
+$status = $_POST['status'];
+
+if ($tipo_funcionario == 'admin') {
+    $tipo_funcionario = 1; // Defina 1 como 'admin'
+} elseif ($tipo_funcionario == 'usuario') {
+    $tipo_funcionario = 2; // Defina 2 como 'usuario'
+} else {
+    $tipo_funcionario = 0; // Valor default, ou se precisar, defina outro valor
+}
 
 // SQL para atualização  
 $sql = "update funcionario set 
-            nome = '".$nome."', login = '".$login."', senha = '".$senha."' , tipo = '".$tipo."' , status = '".$status."'
+            nome = '".$nome."', login = '".$login."', senha = '".$senha."' , tipo_funcionario = '".$tipo_funcionario."' , status = '".$status."'
             where id = ".$id;  
 
 if (mysqli_query($conn, $sql)) {  

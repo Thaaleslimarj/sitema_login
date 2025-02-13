@@ -84,7 +84,6 @@ unset($_SESSION['nao_autenticado']);
 <input type="password" name="senha" placeholder="Senha:">
 <input class="botao" type="submit" value="ENTRAR"><br><br>
 
-<a href="cad_usuario.php">Cadastra-se</a><br><br>
 
 <a href="senha_esquecida/trocar_senha.php">Esqueceu a senha</a><hr>
 
