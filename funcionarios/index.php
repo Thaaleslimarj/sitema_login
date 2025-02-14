@@ -1,101 +1,138 @@
-<?php 
-include '../conexao.php';
-?>
+<?php  
+include '../conexao.php';  
+session_start();  
+?>  
+<!DOCTYPE html>  
+<html lang="pt-br">  
 
-<!DOCTYPE html>
-<html lang="pt-br">
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
+    <style>  
+        body {  
+            background-color:rgb(243, 243, 243); /* Fundo claro */  
+            padding: 20px;  
+        }  
+        
+        h3 {  
+            margin-bottom: 20px;  
+            text-align: center;  
+        }  
+        
+        table {  
+            width: 100%;   
+            margin-top: 20px;  
+            background-color: white; 
+            border-radius: 0.5rem;   
+            overflow: hidden;   
+        }  
+        
+        th, td {  
+            text-align: center;  
+            padding: 12px;  
+            border: 1px solid #dee2e6;   
+        }  
+        
+        th {  
+            background-color: #007bff; 
+            color: white;   
+        }  
+        
+        .btn-secondary {  
+            margin-top: 10px;  
+        }  
+        
+        .table-container {  
+            max-width: 900px;   
+            margin: auto;  
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);   
+            border-radius: 0.5rem; 
+        }  
+    </style>  
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
-    <title>consultar funcionário</title>
+    <title>Consultar Funcionário</title>  
 
-    <script>
+    <script>  
+        function excluir(id) {  
+            if (confirm('Deseja realmente excluir?')) {  
+                location.href = 'include/excluirFuncionario.php?id=' + id;  
+            }  
+        }  
+    </script>  
+</head>  
 
-            function excluir(mat) {
+<body>  
 
-                if (confirm('Deseja realmente excluir ?')) {
-                    location.href = 'include/excluirFuncionario.php?id=' +  mat ;
-                }
+    <h3>Consultar Funcionário</h3>  
 
-            }
+    <form action="index.php" method="get" class="text-center">  
+        <label for="text">Nome:</label>  
+        <input type="text" name="nome" class="form-control d-inline w-50" />  
+        <button type="button" class="btn btn-secondary">Enviar</button>  
+    </form>  
 
-        </script>
-</head>
+    <hr />  
 
-<body>
+    <div class="table-container">  
+        <?php  
+        $nome = '';  
+        if (isset($_GET["nome"])) {  
+            $nome = $_GET["nome"];  
+        }  
 
-    <h3>Consultar funcionário</h3>
+        $sql = "select * from funcionario where nome like '" . mysqli_real_escape_string($conn, $nome) . "%' ";  
+        $result = mysqli_query($conn, $sql);  
+        $totalregistros = mysqli_num_rows($result);  
 
-    <form action="index.php" method="get">
+        if ($totalregistros > 0) {  
+            echo "<table>  
+                       <tr>  
+                            <th>Id</th>  
+                            <th>Nome</th>  
+                            <th>Login</th>  
+                            <th>Tipo</th>  
+                            <th>Status</th>  
+                            <th>Editar</th>  
+                            <th>Excluir</th>  
+                       </tr>";  
+            while ($row = mysqli_fetch_array($result)) {  
+        ?>  
+            <tr>  
+                <td><?= $row["id"] ?> </td>  
+                <td><?= $row["nome"] ?></td>  
+                <td><?= $row["login"] ?></td>  
+                <td><?= $row["tipo_funcionario"] ?></td>  
+                <td><?= $row["status"] ?></td>  
 
-        <label for="text">Nome</label>
-        <input type="text" name="nome" />
-        <input type="submit" value="Enviar" />
+                <?php  
+                if ($_SESSION['tipo'] == 1) {  
+                ?>  
+                    <td><a href="editar.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>  
+                    <td><a href="#" onclick="excluir(<?= $row["id"] ?>)" class="btn btn-danger">X</a></td>  
+                <?php  
+                } else {  
+                    echo "<td></td><td></td>";  
+                }  
+                ?>  
+            </tr>  
+        <?php  
+            }  
 
-    </form>
+            echo "</table>";  
+            echo "<p class='text-center'>Total de registros: $totalregistros</p>"; // Centraliza o total  
+        } else {  
+            echo "<p class='text-center'>Nenhum funcionário cadastrado</p>";  
+        }  
+        ?>  
+    </div>  
 
-    <hr />
+    <br>  
+    <div class="text-center">  
+        <a href="cadastrar.php" class="btn btn-success">Cadastrar Funcionário</a>  
+        <br>  
+        <a href="../painel_logado.php">Página Inicial</a>  
+    </div>  
 
-    <?php
-
-    //se nao estiver vazio
-    //if(!empty($_GET["nome"])){
-
-    //isset() se existe
-    // if (isset($_GET["nome"])) {
-
-        $nome = '';
-        if (isset($_GET["nome"])) {
-            $nome = $_GET["nome"];
-        }
-
- 
-        $sql = "select * from funcionario where nome like '" . $nome . "%' ";
-
-        $result = mysqli_query($conn, $sql);
-        $totalregistros = mysqli_num_rows($result); //numero de linhas do resultado
-
-        if ($totalregistros > 0) {
-            //tem cadastro
-            //echo <table><th> - front end, pode modificar a escrita a vontade 
-            echo "<table width='900px' border='1px'>
-                       <tr>
-                            <th>Id</th>
-                            <th>Nome</th>
-                            <th>Login</th>
-                            <th>Tipo</th>
-                            <th>Status</th>
-                            <th>Editar</th>
-                            <th>Excluir</th>
-                       </tr>";
-            // enquanto houverem resultados o codigo continuara buscando informações;;    
-            while ($row = mysqli_fetch_array($result)) {
-                ?>
-                <!-- //echo <tr><td> - informações do banco. escrita exatamente igual ao do Banco de dados -->
-                <tr>
-                <td><?php echo $row["id"] ?> </td>
-                <td><?php echo $row["nome"] ?></td>
-                <td><?php echo $row["login"] ?></td>
-                <td><?php echo $row["tipo_funcionario"] ?></td>
-                <td><?php echo $row["status"] ?></td>
-                <td><a href="editar.php?id=<?php echo $row["id"] ?>">...</a></td>
-                <td><a href="#"onclick="excluir(<?php echo $row["id"] ?>)">X</a></td>
-                </tr>
-                <?php
-            }
-
-            echo "</table>";
-            echo "Total de registros: $totalregistros";
-        } else {
-            echo "Nenhum cliente cadastrado";
-        }
-    // }
-    ?>
-    <br>
-    <a href="cadastrar.php"> Cadastrar funcionário </a>
-    <br>
-    <a href="../painel_logado.php">Página Inicial</a>
-</body>
+</body>  
 
 </html>
