@@ -1,10 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            background-color: #f4f4f4;  
+            margin: 0;  
+            padding: 20px;  
+        }  
 
+        h3 {  
+            text-align: center;  
+            color: #333;  
+        }  
+
+        form {  
+            max-width: 400px;  
+            margin: 0 auto;  
+            background: #fff;  
+            padding: 20px;  
+            border-radius: 5px;  
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+        }  
+
+        label {  
+            display: block;  
+            margin-bottom: 8px;  
+            font-weight: bold;  
+        }  
+
+        input[type="text"],  
+        input[type="password"],  
+        select {  
+            width: 100%;  
+            padding: 10px;  
+            margin-bottom: 15px;  
+            border: 1px solid #ccc;  
+            border-radius: 4px;  
+            box-sizing: border-box; /* Para incluir padding e border no width total */  
+        }  
+
+        input[type="submit"] {  
+            background-color: #5cb85c;  
+            color: white;  
+            border: none;  
+            padding: 10px;  
+            border-radius: 4px;  
+            cursor: pointer;  
+            font-size: 16px;  
+            width: 100%;  
+        }  
+
+        input[type="submit"]:hover {  
+            background-color: #4cae4c;  
+        }  
+
+        p {  
+            text-align: center;  
+        }  
+
+        a {  
+            text-decoration: none;  
+            color: #007bff;  
+            display: block;  
+            text-align: center;  
+            margin-top: 20px;  
+        }  
+
+        a:hover {  
+            text-decoration: underline;  
+        }  
+    </style>  
+</head>
 <body>
 
     <?php
@@ -27,6 +95,7 @@
         
         login:<Br />
         <input type="text" name="login" value="<?php echo $row["login"] ?>" /><br />
+        
         senha:<Br />
         <input type="password" name="senha" value="<?php echo ($row["senha"]) ?>" /><br />
 

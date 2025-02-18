@@ -1,7 +1,16 @@
 <?php  
+include_once '../conexao.php';
 session_start();   
-$sql = "SELECT * FROM funcionario WHERE id = " . $_SESSION['id'];  
-?>  
+$sql = "SELECT * FROM funcionario WHERE id = " . $_SESSION['id']; 
+$result = mysqli_query($conn, $sql);
+$permissao = mysqli_fetch_array($result);
+
+if($permissao['tipo_funcionario'] != 1 ) {
+    header("Location: ../sem_acesso.php");
+}
+?>
+
+
 
 <!DOCTYPE html>  
 <html lang="pt-br">  

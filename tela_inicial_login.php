@@ -85,10 +85,6 @@ unset($_SESSION['nao_autenticado']);
 <input class="botao" type="submit" value="ENTRAR"><br><br>
 
 
-<a href="senha_esquecida/trocar_senha.php">Esqueceu a senha</a><hr>
-
-
-
 </form>
 </div>
 </body>

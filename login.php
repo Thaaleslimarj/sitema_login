@@ -28,9 +28,9 @@ if ($num_registro > 0) {
     // die;
 
     if ($senhaHash == $dados_login['senha']) {
+        $_SESSION['id'] = $dados_login['id'];
         $_SESSION['nome'] = $dados_login['nome'];
         $_SESSION['tipo'] = $dados_login['tipo_funcionario'];
-        $_SESSION['id'] = $dados_login['id'];
         
         header('Location: painel_logado.php');
         exit();

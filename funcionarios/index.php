@@ -1,6 +1,8 @@
 <?php  
 include '../conexao.php';  
-session_start();  
+session_start();
+
+
 ?>  
 <!DOCTYPE html>  
 <html lang="pt-br">  
@@ -50,8 +52,6 @@ session_start();
         }  
     </style>  
 
-    <title>Consultar Funcionário</title>  
-
     <script>  
         function excluir(id) {  
             if (confirm('Deseja realmente excluir?')) {  
@@ -95,28 +95,34 @@ session_start();
                             <th>Editar</th>  
                             <th>Excluir</th>  
                        </tr>";  
-            while ($row = mysqli_fetch_array($result)) {  
-        ?>  
-            <tr>  
-                <td><?= $row["id"] ?> </td>  
-                <td><?= $row["nome"] ?></td>  
-                <td><?= $row["login"] ?></td>  
-                <td><?= $row["tipo_funcionario"] ?></td>  
-                <td><?= $row["status"] ?></td>  
 
-                <?php  
-                if ($_SESSION['tipo'] == 1) {  
-                ?>  
-                    <td><a href="editar.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>  
-                    <td><a href="#" onclick="excluir(<?= $row["id"] ?>)" class="btn btn-danger">X</a></td>  
-                <?php  
-                } else {  
-                    echo "<td></td><td></td>";  
-                }  
-                ?>  
-            </tr>  
-        <?php  
-            }  
+                       $tiposFuncionarios = [  
+                        1 => "admin",  
+                        2 => "Usuário",  
+                    ];  
+                    
+                    while ($row = mysqli_fetch_array($result)) {  
+                    ?>  
+                        <tr>  
+                            <td><?= $row["id"] ?> </td>  
+                            <td><?= $row["nome"] ?></td>  
+                            <td><?= $row["login"] ?></td>  
+                            <td><?= isset($tiposFuncionarios[$row["tipo_funcionario"]]) ? $tiposFuncionarios[$row["tipo_funcionario"]] : 'Desconhecido' ?></td>  
+                            <td><?= $row["status"] ?></td>  
+                    
+                            <?php  
+                            if ($_SESSION['tipo'] == 1) {  
+                            ?>  
+                                <td><a href="editar.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>  
+                                <td><a href="#" onclick="excluir(<?= $row["id"] ?>)" class="btn btn-danger">X</a></td>  
+                            <?php  
+                            } else {  
+                                echo "<td></td><td></td>";  
+                            }  
+                            ?>  
+                        </tr>  
+                    <?php  
+                    }   
 
             echo "</table>";  
             echo "<p class='text-center'>Total de registros: $totalregistros</p>"; // Centraliza o total  
