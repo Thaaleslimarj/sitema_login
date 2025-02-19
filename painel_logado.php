@@ -42,23 +42,24 @@
     </style>  
 </head>  
 <body>  
-    <?php  
-    include('arquivo_de_login/verifica_login.php');  
-    ?>  
+   
+        <?php  
+        include('arquivo_de_login/verifica_login.php');  
+        ?>  
 
-    <h3>Olá, <?php echo $_SESSION['nome']; ?>! <br>  
-        <a href="arquivo_de_login/logout.php">Encerrar Sessão</a>  
-    </h3>  
-    <br>  
-    <hr>  
+            <h3>Olá, <?php echo $_SESSION['nome']; ?>! <br>  
+                    <a href="arquivo_de_login/logout.php">Encerrar Sessão</a>  
+            </h3>  
+            <br><hr>  
+              
 
-    <a href="funcionarios">Consultar funcionário:</a>    
-    <br><br>  
-    <a href="tipo_funcionarios">Consultar tipo de funcionário:</a>  
-    
-    <br>  
-    <hr>  
-    <h4>&copy; Thales LTDA</h4>  
-    <hr>  
+            <a href="funcionarios">Consultar funcionário:</a>    
+            <br><br>  
+            <a href="tipo_funcionarios">Consultar tipo de funcionário:</a>  
+        
+             <br><hr>  
+              
+            <h4>&copy; Thales LTDA</h4>  
+        <hr>  
 </body>  
 </html>

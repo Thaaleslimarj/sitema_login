@@ -31,7 +31,7 @@ if ($num_registro > 0) {
         $_SESSION['id'] = $dados_login['id'];
         $_SESSION['nome'] = $dados_login['nome'];
         $_SESSION['tipo'] = $dados_login['tipo_funcionario'];
-        
+
         header('Location: painel_logado.php');
         exit();
     } else {
