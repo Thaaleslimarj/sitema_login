@@ -55,7 +55,7 @@
 
             <a href="funcionarios">Consultar funcionário:</a>    
             <br><br>  
-            <a href="tipo_funcionarios">Consultar tipo de funcionário:</a>  
+            <a href="tipo_funcionario">Consultar tipo de funcionário:</a>  
         
              <br><hr>  
               

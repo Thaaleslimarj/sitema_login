@@ -53,7 +53,7 @@ session_start();
     </style>  
 
     <script>  
-        function excluir(id) {  
+        function excluir(tipo) {  
             if (confirm('Deseja realmente excluir?')) {  
                 location.href = 'include/excluirTipoFuncionario.php?id=' + id;  
             }  
@@ -62,12 +62,11 @@ session_start();
 </head>  
 
 <body>  
-
     <h3>Consultar Tipo de Funcionário</h3>  
 
     <form action="tipo_funcionario.php" method="get" class="text-center">  
-        <label for="text">Nome:</label>  
-        <input type="text" name="nome" class="form-control d-inline w-50" />  
+        <label for="text">Tipo:</label>  
+        <input type="text" name="tipo" class="form-control d-inline w-50" />  
         <button type="submit" class="btn btn-secondary">Enviar</button>  
     </form>  
 
@@ -75,12 +74,12 @@ session_start();
 
     <div class="table-container">  
         <?php  
-        $nome = '';  
-        if (isset($_GET["nome"])) {  
-            $nome = $_GET["nome"];  
+        $tipo = '';  
+        if (isset($_GET["tipo"])) {  
+            $tipo = $_GET["tipo"];  
         }  
 
-        $sql = "SELECT * FROM tipo_funcionario WHERE nome LIKE '" . mysqli_real_escape_string($conn, $nome) . "%'";  
+        $sql = "SELECT * FROM tipo_funcionario WHERE tipo LIKE '" . mysqli_real_escape_string($conn, $tipo) . "%'";  
         $result = mysqli_query($conn, $sql);  
         $totalregistros = mysqli_num_rows($result);  
 
@@ -88,31 +87,29 @@ session_start();
             echo "<table>  
                        <tr>  
                             <th>Id</th>  
-                            <th>Nome</th>  
-                            <th>Status</th>  
+                            <th>Tipo</th>  
                             <th>Editar</th>  
                             <th>Excluir</th>  
                        </tr>";  
 
             while ($row = mysqli_fetch_array($result)) {  
-                $tipoFuncionario = $row["nome"]; // Nome do tipo de funcionário  
-                $tipoId = $row["id"]; // ID do tipo de funcionário  
+                $tipoFuncionario = $row["tipo"];   
+                $tipoId = $row["tipo"];   
                 ?>  
                 <tr>  
                     <td><?= $row["id"] ?> </td>  
-                    <td><?= $row["nome"] ?></td>  
-                    <td><?= $row["status"] ?></td>  
+                    <td><?= $row["tipo"] ?></td>  
                     
-                    <td><a href="editarTipoFuncionario.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>  
+                    <td><a href="editartipo_funcionario.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>  
                     
                     <?php  
                     // Verifica se o tipo é admin ou usuário para não permitir exclusão  
-                    if ($tipoFuncionario != 'Administrador' && $tipoFuncionario != 'Usuário') {  
+                    if ($tipoFuncionario != 'admin' && $tipoFuncionario != 'usuário') {  
                     ?>  
                         <td><a href="#" onclick="excluir(<?= $row["id"] ?>)" class="btn btn-danger">X</a></td>  
                     <?php  
                     } else {  
-                        echo "<td></td>"; // Não exibe botão de excluir se for admin ou usuário  
+                        echo "<td></td>";   
                     }  
                     ?>  
                 </tr>  
@@ -120,7 +117,7 @@ session_start();
             }  
 
             echo "</table>";  
-            echo "<p class='text-center'>Total de registros: $totalregistros</p>"; // Centraliza o total  
+            echo "<p class='text-center'>Total de registros: $totalregistros</p>";   
         } else {  
             echo "<p class='text-center'>Nenhum tipo de funcionário cadastrado</p>";  
         }  
@@ -134,7 +131,5 @@ session_start();
         <br>  
         <a href="../painel_logado.php">Página Inicial</a>  
     </div>  
-
 </body>  
-
 </html>
