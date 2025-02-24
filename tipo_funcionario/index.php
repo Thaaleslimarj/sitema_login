@@ -88,6 +88,7 @@ session_start();
                        <tr>  
                             <th>Id</th>  
                             <th>Tipo</th>  
+                            <th>status</th>  
                             <th>Editar</th>  
                             <th>Excluir</th>  
                        </tr>";  
@@ -99,8 +100,9 @@ session_start();
                 <tr>  
                     <td><?= $row["id"] ?> </td>  
                     <td><?= $row["tipo"] ?></td>  
+                    <td><?= $row["status"] ?></td>  
                     
-                    <td><a href="editartipo_funcionario.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>  
+                    <td><a href="editar.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>  
                     
                     <?php  
                     // Verifica se o tipo é admin ou usuário para não permitir exclusão  
@@ -127,7 +129,7 @@ session_start();
     <br>  
     <div class="text-center">  
         <br>  
-        <a href="cadastrarTipoFuncionario.php" class="btn btn-success">Cadastrar Tipo de Funcionário</a>  
+        <a href="cadastrar.php" class="btn btn-success">Cadastrar Tipo de Funcionário</a>  
         <br>  
         <a href="../painel_logado.php">Página Inicial</a>  
     </div>  

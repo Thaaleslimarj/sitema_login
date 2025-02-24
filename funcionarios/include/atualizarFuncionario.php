@@ -9,13 +9,13 @@ $senha = $_POST['senha'];
 $tipo_funcionario = $_POST['tipo_funcionario'];
 $status = $_POST['status'];
 
-if ($tipo_funcionario == 'admin') {
-    $tipo_funcionario = 1; // Defina 1 como 'admin'
-} elseif ($tipo_funcionario == 'usuario') {
-    $tipo_funcionario = 2; // Defina 2 como 'usuario'
-} else {
-    $tipo_funcionario = 0; // Valor default, ou se precisar, defina outro valor
-}
+    if ($tipo_funcionario == 'admin') {
+        $tipo_funcionario = 1; // Defina 1 como 'admin'
+    } elseif ($tipo_funcionario == 'usuario') {
+        $tipo_funcionario = 2; // Defina 2 como 'usuario'
+    } else {
+        $tipo_funcionario = 0; // Valor default, ou se precisar, defina outro valor
+    }
 
 // SQL para atualização  
 $sql = "update funcionario set 

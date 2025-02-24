@@ -84,7 +84,6 @@
 
     $sql = "select * from funcionario where id = " . $id;
     $result = mysqli_query($conn, $sql);
-    // linha a linha do banco
     $row = mysqli_fetch_array($result);
     ?>
 
