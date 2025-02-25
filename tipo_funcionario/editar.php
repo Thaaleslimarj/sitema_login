@@ -89,22 +89,25 @@ $row = mysqli_fetch_assoc($result);
     <h3>Editar Tipo de Funcionário</h3>
     <form action="./include/atualizartipo_Funcionario.php" method="POST">
 
-        Tipo: <br>
-        <input name="tipo" id="tipo" value="<?= $row['tipo'] ?>" />
-        <input name="id" value="<?= $id ?>" hidden>
+        <div>
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <label for="tipo">Tipo de funcionário:</label>
+                <input type="text" name="tipo" class="form-control" value="<?php echo $row ["tipo"]?>" required/>
+        </div>   
 
-        <br>
-
-        Status:<br />
-        <select name="status" id="status">
-            <option value="ativo">Ativo</option>
-            <option value="inativo">Inativo</option>
-        </select>
-
-        <button type="submit" value="Atualizar" class="btn btn-warning mt-2">
-        </button>
+        <div>
+            Status:
+                <select name="status" id="status">
+                    <option value="ativo">Ativo</option>
+                    <option value="inativo">Inativo</option>
+                </select>
+        </div>
+        
+        <div>
+            <input type="submit" value="atualizar" class="btn btn-success mt-2" />
+        </div>
+    
     </form>
-
     <div class="text-center mt-4">
         <a href="index.php" class="btn btn-secondary">Voltar</a>
     </div>

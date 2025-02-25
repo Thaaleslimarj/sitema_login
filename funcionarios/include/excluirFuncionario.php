@@ -13,5 +13,6 @@ if (mysqli_query($conn, $sql)) {
 mysqli_close($conn);
 ?>
 
-<br />
-<a href="../../funcionarios/">Página inicial</a>
+<div>
+    <a href="../../funcionarios/">Página inicial</a>
+</div>

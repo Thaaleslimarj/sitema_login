@@ -1,15 +1,12 @@
 <?php
 include '../../conexao.php';
 
-// Testar as informações que estão passando (opcional)  
-// echo '<pre>';  
-// print_r($_POST);  
-// die();  
-
 // Prepara os dados para prevenir SQL Injection  
 $nome = mysqli_real_escape_string($conn, $_POST['nome']);
 $login = mysqli_real_escape_string($conn, $_POST['login']);
 $senha = mysqli_real_escape_string($conn, $_POST['senha']);
+$status = mysqli_real_escape_string($conn, $_POST['status']);
+ 
 
 // Mapeia o tipo de funcionário para um valor inteiro  
 $tipo_string = mysqli_real_escape_string($conn, $_POST['tipo_funcionario']);
@@ -20,8 +17,6 @@ if ($tipo_string === 'admin') {
 } elseif ($tipo_string === 'usuario') {
     $tipo_funcionario = 2; // Mapeia 'funcionario' para 2  
 } // Adicione mais mapeamentos conforme necessário  
-
-$status = mysqli_real_escape_string($conn, $_POST['status']);
 
 // Hash da senha  
 $senhaHash = md5($senha);
@@ -40,5 +35,6 @@ if (mysqli_query($conn, $sql)) {
 mysqli_close($conn);
 ?>
 
-<br />
-<a href="../index.php">Página Inicial</a>
+<div>
+    <a href="../index.php">Página Inicial</a>
+</div>

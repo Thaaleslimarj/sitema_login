@@ -14,9 +14,9 @@ if ($permissao['tipo_funcionario'] != 1) {
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Funcionário</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
         body {
@@ -88,41 +88,96 @@ if ($permissao['tipo_funcionario'] != 1) {
         a:hover {
             text-decoration: underline;
         }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #777;
+            line-height: 28px;
+            padding-top: 0.2em
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            margin-left: -20px;
+            left: unset;
+            right: 1em;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            position: unset;
+        }
+
+        .select2-container .select2-selection--single {
+            box-sizing: border-box;
+            display: block;
+            height: calc(1.5em + 0.75rem + 2px);
+            width: 100%;
+            color: #495057;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        [type=search] {
+            outline-offset: 0;
+            -webkit-appearance: none;
+            outline-color: #aaa
+        }
     </style>
 
 </head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        $('.select2').select2({});
+
+    });
+</script>
 
 <body>
 
     <h3>Cadastro de Funcionário</h3>
     <form action="./include/gravarFuncionario.php" method="post" name="cadastro">
 
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br>
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br>
+        </div>
 
-        <label for="login">Login:</label>
-        <input type="text" id="login" name="login" required><br>
+        <div>
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="login" required><br>
 
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required><br>
+        </div>
 
-        <label for="tipo">Tipo:</label>
-        <select name="tipo_funcionario" id="tipo" required>
-            <option value="admin">Administrador</option>
-            <option value="usuario">Usuário</option>
-        </select> <br>
+        <div>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required><br>
+        </div>
 
-        <label for="status">Status:</label>
-        <select name="status" id="status" required>
-            <option value="ativo">Ativo</option>
-            <option value="inativo">Inativo</option>
-        </select> <br>
+        <div>
+            <label for="tipo">Tipo:</label>
+            <select name="tipo_funcionario" class="form-control select2" id="tipo" required>
+                <option value="admin">Administrador</option>
+                <option value="usuario">Usuário</option>
+            </select>
+        </div>
 
-        <input type="submit" value="Enviar" />
+        <div class="pt-3">
+            <label for="status">Status:</label>
+            <select name="status" class="form-control select2" id="status" required>
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+            </select>
+        </div>
+
+        <input type="submit" value="Enviar" class="btn btn-success mt-2" />
     </form>
 
     <p><a href="./index.php">Página Inicial</a></p>
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </html>

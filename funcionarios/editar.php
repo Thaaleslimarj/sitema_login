@@ -1,8 +1,21 @@
+<?php
+    include_once '../conexao.php';
+    $id = $_GET["id"];
+
+    $sql = "select * from funcionario where id = " . $id;
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+ 
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -73,54 +86,96 @@
         a:hover {
             text-decoration: underline;
         }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #777;
+            line-height: 28px;
+            padding-top: 0.2em
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            margin-left: -20px;
+            left: unset;
+            right: 1em;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            position: unset;
+        }
+
+        .select2-container .select2-selection--single {
+            box-sizing: border-box;
+            display: block;
+            height: calc(1.5em + 0.75rem + 2px);
+            width: 100%;
+            color: #495057;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        [type=search] {
+            outline-offset: 0;
+            -webkit-appearance: none;
+            outline-color: #aaa
+        }
     </style>
 </head>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('.select2').select2({});
+
+        });
+    </script>
+
 <body>
-
-    <?php
-    include_once '../conexao.php';
-    $id = $_GET["id"];
-
-    $sql = "select * from funcionario where id = " . $id;
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
-    ?>
 
     <h3>Editar funcionário</h3>
 
     <form action="include/atualizarFuncionario.php" method="post">
-        <input type="hidden" readonly="true" name="id" value="<?php echo $row["id"] ?>" />
+        <input type="hidden" readonly="true" name="id" value="<?php echo $row["id"] ?>"/>
 
-        Nome:<Br />
-        <input type="text" name="nome" value="<?php echo $row["nome"] ?>" /><br />
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" value="<?php echo $row["nome"] ?>" required/>
+        </div>
+        
+        <div>
+            <label for="login">Login:</label>
+            <input type="text" name="login" value="<?php echo $row["login"] ?>" required/>
+        </div>
+        
+        <div>
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" value="<?php echo ($row["senha"]) ?>" required/>
+        </div>    
+       
+        <div> 
+            <label for="tipo_funcionario">Tipo de funcionário:</label>
+            <select name="tipo_funcionario" class="form-control select2" id="tipo_funcionario" required>
+                <option value="admin">Administrador</option>
+                <option value="usuario">Usuário</option>
+            </select>
+        </div>
 
-        login:<Br />
-        <input type="text" name="login" value="<?php echo $row["login"] ?>" /><br />
-
-        senha:<Br />
-        <input type="password" name="senha" value="<?php echo ($row["senha"]) ?>" /><br />
-
-        Tipo: <br>
-        <select name="tipo_funcionario" id="tipo_funcionario">
-            <option value="admin">Administrador</option>
-            <option value="usuario">Usuário</option>
-        </select>
-        <br>
-
-        Status:<br />
-        <select name="status" id="status">
-            <option value="ativo">Ativo</option>
-            <option value="inativo">Inativo</option>
-        </select>
-
-        <br><br>
-        <input type="submit" value="Enviar" />
+       <div class="pt-2">
+                <label for="status">Status:</label>
+                <select name="status" class="form-control select2" id="status" required>
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+            </select>
+        </div>
+        
+        <input type="submit" value="Enviar" class="btn btn-success mt-2"/>
 
     </form>
 
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </html>
 
 <br />
