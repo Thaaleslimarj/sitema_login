@@ -65,15 +65,13 @@ session_start();
 
 <body>
 
-    <h3>Consultar Funcionário</h3>
+    <h3>Consultar Funcionário:</h3>
 
     <form action="index.php" method="get" class="text-center">
         <label for="text">Nome:</label>
         <input type="text" name="nome" class="form-control d-inline w-50" />
         <button type="button" class="btn btn-secondary">Enviar</button>
     </form>
-
-    <hr />
 
     <div class="table-container">
         <?php
@@ -82,7 +80,7 @@ session_start();
             $nome = $_GET["nome"];
         }
 
-        $sql = "select * from funcionario where nome like '" . mysqli_real_escape_string($conn, $nome) . "%' ";
+        $sql = "SELECT * FROM funcionario WHERE nome like '" . mysqli_real_escape_string($conn, $nome) . "%' ";
         $result = mysqli_query($conn, $sql);
         $totalregistros = mysqli_num_rows($result);
 
@@ -98,33 +96,33 @@ session_start();
                             <th>Excluir</th>  
                        </tr>";
 
-            $tiposFuncionarios = [
-                1 => "admin",
-                2 => "Usuário",
-            ];
+                $tiposFuncionarios = [
+                    1 => "admin",
+                    2 => "Usuário",
+                ];
 
-            while ($row = mysqli_fetch_array($result)) {
+                while ($row = mysqli_fetch_array($result)) {
         ?>
                 <tr>
                     <td><?= $row["id"] ?> </td>
                     <td><?= $row["nome"] ?></td>
                     <td><?= $row["login"] ?></td>
-                    <td><?= isset($tiposFuncionarios[$row["tipo_funcionario"]]) ? $tiposFuncionarios[$row["tipo_funcionario"]] : 'Desconhecido' ?></td>
                     <td><?= $row["status"] ?></td>
+                    <td><?= isset($tiposFuncionarios[$row["tipo_funcionario"]]) ? $tiposFuncionarios[$row["tipo_funcionario"]] : 'Desconhecido' ?></td>
 
                     <?php
                     if ($_SESSION['tipo'] == 1) {
                     ?>
                         <td><a href="editar.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>
-                        <td><a href="#" onclick="excluir(<?= $row["id"] ?>)" class="btn btn-danger">X</a></td>
+                        <td><a href="#" onclick="excluir(<?= $row["id"] ?>)" >X</a></td>
                     <?php
                     } else {
                         echo "<td></td><td></td>";
                     }
                     ?>
                 </tr>
-        <?php
-            }
+            <?php
+        }
 
             echo "</table>";
             echo "<p class='text-center'>Total de registros: $totalregistros</p>"; // Centraliza o total  

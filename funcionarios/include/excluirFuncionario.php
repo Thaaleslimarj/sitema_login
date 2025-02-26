@@ -14,5 +14,7 @@ mysqli_close($conn);
 ?>
 
 <div>
-    <a href="../../funcionarios/">Página inicial</a>
+    <h4>
+        <a href="../../funcionarios/">Página inicial</a>
+    </h4>
 </div>

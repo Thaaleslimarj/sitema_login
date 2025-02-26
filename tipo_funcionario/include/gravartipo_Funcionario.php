@@ -25,5 +25,7 @@ mysqli_close($conn);
 ?>
 
 <div>
-    <a href="../index.php">Página Inicial</a>
+    <h4>
+        <a href="../index.php">Voltar</a>
+    </h4>
 </div>

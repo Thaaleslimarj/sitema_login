@@ -43,25 +43,40 @@
     </style>  
 </head>  
 <body>  
-   
-        <?php  
-        include('arquivo_de_login/verifica_login.php');  
-        ?>  
+       
+                <?php  
+                        include('arquivo_de_login/verifica_login.php');  
+                        include ('./conexao.php');
+                
+                $totalfuncionarioResult = mysqli_query($conn, "SELECT COUNT(*) as total FROM funcionario");
+                $totalFuncionario = mysqli_fetch_assoc()
+                
+                
+                
+                
+                
+                
+                
+                ?>  
 
-            <h3>Olá, <?php echo $_SESSION['nome']; ?>! <br>  
-                    <a href="arquivo_de_login/logout.php">Encerrar Sessão</a>  
-            </h3>  
-            <br><hr>  
-              
+                <div>
+                 <h4>Bem vindo, <?php echo htmlspecialchars($_SESSION ['nome']); ?>! </h4> 
+                </div>        
+            
+                    <br><hr>
+                    <a href="funcionarios">Consultar funcionário:</a>    
+                    <br> 
+                    
+                    <hr>
+                    <a href="tipo_funcionario">Consultar tipo de funcionário:</a>  
+                    <hr>
+                    
+                    <br><hr>  
+                    <a href="arquivo_de_login/logout.php">Encerrar Sessão</a>
 
-            <a href="funcionarios">Consultar funcionário:</a>    
-            <br><br>  
-            <a href="tipo_funcionario">Consultar tipo de funcionário:</a>  
-        
-             <br><hr>  
-              
-            <h4>&copy; Thales LTDA</h4>  
-        <hr>  
+                    <hr>        
+                    <h4>&copy; Thales LTDA</h4>  
+                    <hr>  
 </body>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </html>

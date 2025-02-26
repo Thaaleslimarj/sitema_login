@@ -97,14 +97,14 @@ $row = mysqli_fetch_assoc($result);
 
         <div>
             Status:
-                <select name="status" id="status">
+                <select name="status" id="status" >
                     <option value="ativo">Ativo</option>
                     <option value="inativo">Inativo</option>
                 </select>
         </div>
         
         <div>
-            <input type="submit" value="atualizar" class="btn btn-success mt-2" />
+            <input type="submit" value="Atualizar" class="btn btn-success mt-2" />
         </div>
     
     </form>
@@ -113,5 +113,5 @@ $row = mysqli_fetch_assoc($result);
     </div>
 
 </body>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

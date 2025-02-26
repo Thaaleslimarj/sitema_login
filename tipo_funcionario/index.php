@@ -1,6 +1,6 @@
 <?php  
-include '../conexao.php';  
 session_start();  
+include '../conexao.php';  
 ?>  
 
 <!DOCTYPE html>  
@@ -53,24 +53,22 @@ session_start();
     </style>  
 
     <script>  
-        function excluir(tipo) {  
+        function excluir(id) {  
             if (confirm('Deseja realmente excluir?')) {  
-                location.href = 'include/excluirTipoFuncionario.php?id=' + id;  
+                location.href = 'include/excluirtipo_Funcionario.php?id=' + id;  
             }  
         }  
     </script>  
 </head>  
 
 <body>  
-    <h3>Consultar Tipo de Funcionário</h3>  
+    <h3>Consultar Tipo de Funcionário:</h3>  
 
-    <form action="tipo_funcionario.php" method="get" class="text-center">  
+    <form action="index.php" method="get" class="text-center">  
         <label for="text">Tipo:</label>  
         <input type="text" name="tipo" class="form-control d-inline w-50" />  
-        <button type="submit" class="btn btn-secondary">Enviar</button>  
+        <button type="button" class="btn btn-secondary">Enviar</button>  
     </form>  
-
-    <hr />  
 
     <div class="table-container">  
         <?php  
@@ -108,7 +106,7 @@ session_start();
                     // Verifica se o tipo é admin ou usuário para não permitir exclusão  
                     if ($tipoFuncionario != 'admin' && $tipoFuncionario != 'usuário') {  
                     ?>  
-                        <td><a href="#" onclick="excluir(<?= $row["id"] ?>)" class="btn btn-danger">X</a></td>  
+                        <td><a href="#" onclick="excluir(<?= $row["id"] ?>)"class="btn btn-danger">X</a></td>  
                     <?php  
                     } else {  
                         echo "<td></td>";   
@@ -128,9 +126,11 @@ session_start();
 
     <br>  
     <div class="text-center">  
-        <br>  
+       
+    <br>  
         <a href="cadastrar.php" class="btn btn-success">Cadastrar Tipo de Funcionário</a>  
-        <br>  
+    <br>  
+       
         <a href="../painel_logado.php">Página Inicial</a>  
     </div>  
 </body>  

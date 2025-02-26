@@ -156,17 +156,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <select name="status" class="form-control select2" id="status">
             <option value="ativo">Ativo</option>    
             <option value="inativo">Inativo</option>    
-            
         </select>
 
         <input type="submit" value="Cadastrar" class="btn btn-success mt-2">  
         <div class="text-center mt-4">  
-        <a href="index.php" class="btn btn-secondary">Voltar</a>  
+            <a href="index.php" class="btn btn-secondary">Voltar</a>  
         </div>  
 </form> 
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
