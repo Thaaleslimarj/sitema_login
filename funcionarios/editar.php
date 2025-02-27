@@ -53,7 +53,6 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-            /* Para incluir padding e border no width total */
         }
 
         input[type="submit"] {
@@ -148,11 +147,6 @@
             <input type="text" name="login" value="<?php echo $row["login"] ?>" required/>
         </div>
         
-        <div>
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" value="<?php echo ($row["senha"]) ?>" required/>
-        </div>    
-       
         <div> 
             <label for="tipo_funcionario">Tipo de funcionário:</label>
             <select name="tipo_funcionario" class="form-control select2" id="tipo_funcionario" required>

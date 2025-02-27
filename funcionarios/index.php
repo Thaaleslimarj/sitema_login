@@ -93,6 +93,7 @@ session_start();
                             <th>Tipo</th>  
                             <th>Status</th>  
                             <th>Editar</th>  
+                            <th>Senha</th>  
                             <th>Excluir</th>  
                        </tr>";
 
@@ -107,13 +108,14 @@ session_start();
                     <td><?= $row["id"] ?> </td>
                     <td><?= $row["nome"] ?></td>
                     <td><?= $row["login"] ?></td>
-                    <td><?= $row["status"] ?></td>
                     <td><?= isset($tiposFuncionarios[$row["tipo_funcionario"]]) ? $tiposFuncionarios[$row["tipo_funcionario"]] : 'Desconhecido' ?></td>
+                    <td><?= $row["status"] ?></td>
 
                     <?php
                     if ($_SESSION['tipo'] == 1) {
                     ?>
                         <td><a href="editar.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>
+                        <td><a href="alterarSenha.php?id=<?= $row["id"] ?>" class="btn btn-warning">Alterar</a></td>
                         <td><a href="#" onclick="excluir(<?= $row["id"] ?>)" >X</a></td>
                     <?php
                     } else {

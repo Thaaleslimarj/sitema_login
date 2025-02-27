@@ -55,7 +55,6 @@ if ($permissao['tipo_funcionario'] != 1) {
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-            /* Para incluir padding e border no width total */
         }
 
         input[type="submit"] {
