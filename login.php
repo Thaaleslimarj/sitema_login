@@ -8,8 +8,7 @@ if (empty($_POST['usuario']) || empty($_POST['senha'])) {
 }
 
 $usuario = htmlspecialchars($_POST['usuario']);
-$senha = htmlspecialchars($_POST['senha']);
-$senhaHash = md5($senha);
+$senha = ($_POST['senha']);
 
 $sql_login = "SELECT 
                     nome, senha, tipo_funcionario, id
@@ -27,7 +26,7 @@ if ($num_registro > 0) {
     // print_r($dados_login);
     // die;
 
-    if ($senhaHash == $dados_login['senha']) {
+    if (password_verify($senha, $dados_login['senha'])) {  
         $_SESSION['id'] = $dados_login['id'];
         $_SESSION['nome'] = $dados_login['nome'];
         $_SESSION['tipo'] = $dados_login['tipo_funcionario'];

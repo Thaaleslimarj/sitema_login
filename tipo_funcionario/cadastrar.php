@@ -2,7 +2,6 @@
 include '../conexao.php';
 session_start();
 
-// Inserindo novo tipo de funcionário  
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['tipo_funcionario'];
     $sql = "INSERT INTO tipo_funcionario (tipo) VALUES ('$tipo')";

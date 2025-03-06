@@ -17,7 +17,10 @@ if ($tipo_funcionario == 'admin') {
 
 
 $sql = "UPDATE funcionario SET   
-            nome = '" . $nome . "', login = '" . $login . "', tipo_funcionario = '" . $tipo_funcionario . "' , status = '" . $status . "'  
+            nome = '" . $nome . "', 
+            login = '" . $login . "', 
+            tipo_funcionario = '" . $tipo_funcionario . "' , 
+            status = '" . $status . "'  
             WHERE id = " . $id;  
 
 if (mysqli_query($conn, $sql)) {  

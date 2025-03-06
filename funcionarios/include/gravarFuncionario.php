@@ -1,31 +1,33 @@
 <?php  
 include '../../conexao.php';  
 
-// Prepara os dados para prevenir SQL Injection  
+if (!$conn) {  
+    die("Falha na conexão com o banco de dados: " . mysqli_connect_error());  
+}  
+
 $nome = mysqli_real_escape_string($conn, $_POST['nome']);  
 $login = mysqli_real_escape_string($conn, $_POST['login']);  
-$senha = mysqli_real_escape_string($conn, $_POST['senha']);  
+$senha = $_POST['senha'];  
 $status = mysqli_real_escape_string($conn, $_POST['status']);  
-   
-$tipo_string = mysqli_real_escape_string($conn, $_POST['tipo_funcionario']);  
-$tipo_funcionario = 0;   
-
-if ($tipo_string === 'admin') {  
-    $tipo_funcionario = 1;  
-} elseif ($tipo_string === 'usuario') {  
-    $tipo_funcionario = 2;   
-}   
+$tipo_funcionario = $_POST['tipo_funcionario'];  
 
 $senhaHash = md5($senha);  
 
-$sql = "INSERT INTO funcionario (nome, login, senha, tipo_funcionario, status) VALUES ('$nome', '$login', '$senhaHash', '$tipo_funcionario', '$status')";  
-
-if (mysqli_query($conn, $sql)) {  
-    $mensagem = "Cadastro realizado com sucesso!";  
-    $tipoMensagem = "success";  
-} else {  
-    $mensagem = "Erro ao cadastrar: " . mysqli_error($conn);  
+if (!is_numeric($tipo_funcionario)) {  
+    $mensagem = "Erro: Tipo de funcionário inválido.";  
     $tipoMensagem = "error";  
+} else {  
+ 
+ $sql = "INSERT INTO funcionario (nome, login, senha, tipo_funcionario, status)   
+            VALUES ('$nome', '$login', '$senhaHash', '$tipo_funcionario', '$status')";  
+
+    if (mysqli_query($conn, $sql)) {  
+        $mensagem = "Cadastro realizado com sucesso!";  
+        $tipoMensagem = "success";  
+    } else {  
+        $mensagem = "Erro ao cadastrar: " . mysqli_error($conn);  
+        $tipoMensagem = "error";  
+    }  
 }  
 
 mysqli_close($conn);  

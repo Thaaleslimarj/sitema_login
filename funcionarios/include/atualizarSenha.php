@@ -17,7 +17,7 @@ if (empty($senha) || empty($confirmar_senha)) {
 } else {  
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);  
 
-    $sql = "UPDATE funcionario SET senha = $senhaHash WHERE id = $id";  
+    $sql = "UPDATE funcionario SET senha = ? WHERE id = ?";  
     
     if ($stmt = mysqli_prepare($conn, $sql)) {  
         mysqli_stmt_bind_param($stmt, 'si', $senhaHash, $id); 
@@ -43,3 +43,5 @@ mysqli_close($conn);
 header("Location: ../index.php?mensagem=" . urlencode($mensagem) . "&tipo=" . urlencode($tipoMensagem));  
 exit();  
 ?>  
+
+<!-- <a href="../index.php">Voltar</a> -->

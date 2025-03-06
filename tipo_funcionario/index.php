@@ -97,8 +97,8 @@ include '../conexao.php';
                 ?>  
                 <tr>  
                     <td><?= $row["id"] ?> </td>  
-                    <td><?= $row["tipo"] ?></td>  
-                    <td><?= $row["status"] ?></td>  
+                    <td><?= $row["tipo"] ?> </td>  
+                    <td><?= $row["status"] ?> </td>  
                     
                     <td><a href="editar.php?id=<?= $row["id"] ?>" class="btn btn-warning">Editar</a></td>  
                     
